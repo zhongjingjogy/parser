@@ -69,16 +69,32 @@ class Parser
   double value_;
      
   public:
- 
+  Parser()
+  {
+    symbols_ ["pi"] = 3.1415926535897932385;
+    symbols_ ["e"]  = 2.7182818284590452354;
+    symbols_ ["R"] = 8.314;
+    symbols_ ["T"] = 1.0;
+  }
   // ctor
   Parser (const std::string & program) 
     : program_ (program)
       {  
       // insert pre-defined names:
       symbols_ ["pi"] = 3.1415926535897932385;
-      symbols_ ["e"]  = 2.7182818284590452354;      
+      symbols_ ["e"]  = 2.7182818284590452354;
+      symbols_ ["R"] = 8.314;
+      symbols_ ["T"] = 1.0;   
       }
-  
+  void Set(const std::string & program)
+  {
+    symbols_.clear();
+    symbols_ ["pi"] = 3.1415926535897932385;
+    symbols_ ["e"]  = 2.7182818284590452354;
+    symbols_ ["R"] = 8.314;
+    symbols_ ["T"] = 1.0;
+    program_ = program;
+  }
   const double Evaluate ();  // get result
   const double Evaluate (const std::string & program);  // get result
 
